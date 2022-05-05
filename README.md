@@ -187,8 +187,44 @@ Linux networking basic
  - Network Layer
    - Lớp Mạng xác định việc định tuyến các gói của chúng ta từ máy chủ nguồn đến máy chủ đích. 
    - Trong ví dụ của chúng ta, gói tin của chúng ta chỉ di chuyển trong cùng một mạng, nhưng Internet được tạo thành từ nhiều mạng. Các mạng nhỏ hơn tạo nên Internet này được gọi là mạng con. Tất cả các mạng con đều kết nối với nhau theo một cách nào đó, đó là lý do tại sao chúng tôi có thể truy cập www.google.com mặc dù nó nằm trên mạng của chính nó. Đ
-   - ịa chỉ IP xác định các quy tắc để di chuyển đến các mạng con khác nhau.  
+   - Địa chỉ IP xác định các quy tắc để di chuyển đến các mạng con khác nhau.
+   - Trong lớp mạng, nó nhận phân đoạn đến từ lớp truyền tải và đóng gói phân đoạn này trong một gói IP sau đó gắn địa chỉ IP của máy chủ nguồn và địa chỉ IP của máy chủ đích vào tiêu đề gói. Vì vậy, tại thời điểm này, gói tin của chúng ta có thông tin về nơi nó sẽ đi và nó đến từ đâu. Bây giờ nó sẽ gửi gói tin của chúng ta đến lớp phần cứng vật lý.  
+ 
  - Link Layver
+   - Ở dưới cùng của mô hình TCP / IP là Lớp liên kết. Lớp này là lớp dành riêng cho phần cứng.
+   - Trong lớp liên kết, gói tin của chúng ta được đóng gói một lần nữa vào một thứ gọi là khung. Tiêu đề khung gắn địa chỉ MAC nguồn và đích của máy chủ, tổng kiểm tra và bộ phân tách gói để người nhận có thể biết khi nào một gói kết thúc.
+   - ARP (Giao thức phân giải địa chỉ)
+     - ARP tìm địa chỉ MAC được liên kết với địa chỉ IP. ARP được sử dụng trong cùng một mạng.
+     - Khi chúng ta ở trên cùng một mạng, trước tiên, các hệ thống sử dụng bảng tra cứu ARP để lưu trữ thông tin về những địa chỉ IP nào được liên kết với địa chỉ MAC nào. 
+     - Nếu giá trị không có ở đó, thì ARP được sử dụng. Sau đó hệ thống sẽ gửi một bản tin quảng bá đến mạng bằng giao thức ARP để tìm ra host nào có IP 10.10.1.4. Tin nhắn quảng bá là một tin nhắn đặc biệt được gửi đến tất cả các máy chủ trên mạng (được đặt tên phù hợp để gửi một chương trình phát sóng). 
+     - Bất kỳ máy nào có địa chỉ IP được yêu cầu sẽ trả lời bằng một gói ARP chứa địa chỉ IP và địa chỉ MAC.
+   - Truyền tải gói
+     - Tôi gửi cho bạn một email: dữ liệu này được gửi đến lớp truyền tải.
+     - Lớp truyền tải đóng gói dữ liệu vào một tiêu đề TCP hoặc UDP để tạo thành một phân đoạn, phân đoạn gắn cổng TCP hoặc UDP đích và nguồn, sau đó phân đoạn được gửi đến lớp mạng.
+     - Lớp mạng đóng gói phân đoạn TCP bên trong một gói IP, nó gắn địa chỉ IP nguồn và đích. Sau đó định tuyến gói tin đến lớp liên kết.
+     - Sau đó, gói tin đến phần cứng vật lý của tôi và được đóng gói trong một khung. Địa chỉ MAC nguồn và đích được thêm vào khung.
+     - Bạn nhận khung dữ liệu này thông qua lớp vật lý của cô ấy và kiểm tra tính toàn vẹn của từng khung, sau đó khử đóng gói nội dung khung và gửi gói IP đến lớp mạng.
+     - Lớp mạng đọc gói tin để tìm IP nguồn và đích đã được đính kèm trước đó. Nó kiểm tra xem IP của nó có giống với IP đích hay không! Nó khử đóng gói gói tin và gửi phân đoạn đến lớp truyền tải.
+     - Lớp truyền tải bỏ đóng gói các phân đoạn, kiểm tra số cổng TCP hoặc UDP và tạo kết nối với lớp ứng dụng dựa trên các số cổng đó. 
+     - Lớp ứng dụng nhận dữ liệu từ lớp vận chuyển trên cổng đã được chỉ định và trình bày nó cho bạn dưới dạng thông báo email cuối cùng.    
+ 
  - DHCP Overview
+   - DHCP chỉ định địa chỉ IP, mặt nạ mạng con và cổng vào cho máy của chúng ta. Ví dụ: giả sử bạn có điện thoại di động và bạn muốn nhận số điện thoại di động để bắt đầu nói chuyện với mọi người. Bạn phải gọi cho nhà cung cấp dịch vụ điện thoại của bạn và họ sẽ cung cấp cho bạn một số. Miễn là bạn thanh toán hóa đơn, bạn có thể tiếp tục sử dụng điện thoại của mình. DHCP là nhà cung cấp dịch vụ điện thoại trong trường hợp này, nó cung cấp cho bạn một địa chỉ IP để bạn có thể nói chuyện với các địa chỉ IP khác. Bạn cũng được cho thuê một địa chỉ IP, những địa chỉ này tồn tại trong một khoảng thời gian nhất định, sau đó sẽ được gia hạn tùy thuộc vào cách bạn cài đặt cho thuê của mình.
+   - DHCP là tuyệt vời vì nhiều lý do, nó cho phép quản trị viên mạng không phải lo lắng về việc gán địa chỉ IP và nó cũng ngăn họ thiết lập địa chỉ IP trùng lặp. 
+   - Mỗi mạng vật lý phải có máy chủ DHCP riêng để máy chủ lưu trữ có thể yêu cầu địa chỉ IP. Trong cài đặt gia đình thông thường, bộ định tuyến thường hoạt động như máy chủ DHCP.
+   - Cách DHCP lấy thông tin máy chủ động:
+     - DHCP DISCOVER - Thông báo này được phát đi để tìm kiếm máy chủ DHCP.
+     - DHCP OFFER - Máy chủ DHCP trong mạng trả lời bằng một thông báo ưu đãi. Phiếu mua hàng chứa một gói với thời gian thuê DHCP, mặt nạ mạng con, địa chỉ IP, v.v.
+     - DHCP REQUEST - Máy khách gửi một chương trình phát sóng khác để cho tất cả các máy chủ DHCP biết nó đã chấp nhận đề nghị nào.
+     - DHCP ACK - Thông báo được gửi bởi máy chủ. 
+
+## 3. Subnetting
+ - IPv4
+ - Subnets
+ - Subnet Math
+ - Subnetting Cheats
+ - CIDR
+ - NAT
+ - IPv6  
 
      
