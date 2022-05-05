@@ -125,10 +125,56 @@ Linux networking basic
    - Mô hình OSI đã khai sinh ra mô hình cuối cùng trở thành mô hình TCP/IP và mô hình này thực sự là nền tảng của Internet. 
    - Đó là việc triển khai thực tế của mạng. Mô hình TCP/IP sử dụng bộ giao thức TCP/IP, mà chúng ta thường gọi là TCP/IP. 
    - Các giao thức này làm việc cùng nhau để chỉ định cách dữ liệu nên được thu thập, định địa chỉ, truyền và định tuyến thông qua một mạng. Sử dụng mô hình TCP/IP, chúng ta có thể thấy cách các giao thức này được sử dụng để chỉ ra sự phân tích về cách một gói tin truyền qua mạng.
+   - Các lớp trong mô hình:
+     - Lớp ứng dụng:
+       - Lớp trên cùng của mô hình TCP/IP. 
+       - Nó xác định cách các chương trình máy tính của bạn (chẳng hạn như trình duyệt web của bạn) giao diện với các dịch vụ lớp truyền tải để xem dữ liệu được gửi hoặc nhận.
+       - Lớp này sử dụng:
+         - HTTP (Giao thức truyền siêu văn bản) - được sử dụng cho các trang web trên Internet.
+         - SMTP (Giao thức truyền thư đơn giản) - truyền thư điện tử (email)
+     - Lớp vận chuyển:
+       - Dữ liệu sẽ được truyền như thế nào, bao gồm việc kiểm tra các cổng chính xác, tính toàn vẹn của dữ liệu và về cơ bản việc phân phối các gói.
+       - Lớp này sử dụng:
+         - TCP (Giao thức điều khiển truyền) - cung cấp dữ liệu đáng tin cậy
+         - UDP (Giao thức dữ liệu người dùng) - cung cấp dữ liệu không đáng tin cậy
+     - Lớp mạng:
+       - Lớp này chỉ định cách di chuyển các gói giữa các máy chủ và giữa các mạng.
+       - Lớp này sử dụng:
+         - IP (Giao thức Internet) - Giúp định tuyến các gói từ máy này sang máy khác.
+         - ICMP (Internet Control Message Protocol) - Giúp cho chúng tôi biết điều gì đang xảy ra, chẳng hạn như thông báo lỗi và thông tin gỡ lỗi.
+     - Lớp liên kết:
+       - Lớp này chỉ định cách gửi dữ liệu qua một phần cứng vật lý. Chẳng hạn như dữ liệu truyền qua Ethernet, cáp quang, v.v.                  
      
  - Network Addressing
+   - Các gói cần thông tin giống nhau, máy chủ và các máy khác được xác định bằng địa chỉ MAC (điều khiển truy cập phương tiện) và địa chỉ IP, để giúp con người chúng ta dễ dàng sử dụng tên máy để xác định máy chủ hơn. 
+   - Địa chỉ MAC
+     - Địa chỉ MAC là một định danh duy nhất được sử dụng làm địa chỉ phần cứng. 
+     - Địa chỉ này sẽ không bao giờ thay đổi. Khi muốn truy cập Internet, máy cần phải có một thiết bị gọi là card giao diện mạng. 
+     - Bộ điều hợp mạng này có địa chỉ phần cứng riêng được sử dụng để xác định máy của bạn. Địa chỉ MAC cho thiết bị Ethernet trông giống như sau 00: C4: B5: 45: B2: 43. 
+     - Địa chỉ MAC được cấp cho bộ điều hợp mạng khi chúng được sản xuất. Mỗi nhà sản xuất có một mã định danh duy nhất về mặt tổ chức (OUI) để xác định họ là nhà sản xuất. OUI này được biểu thị bằng 3 byte đầu tiên của địa chỉ MAC. 
+   - Các địa chỉ IP
+     - Địa chỉ IP được sử dụng để xác định một thiết bị trên mạng, chúng độc lập về phần cứng và có thể khác nhau về cú pháp tùy thuộc vào việc đang sử dụng IPv4 hay IPv6. 
+     - Địa chỉ IP điển hình sẽ giống như sau: 10.24.12.4. Địa chỉ IP được sử dụng với phần mềm của mạng. Bất cứ khi nào một hệ thống được kết nối với Internet, nó phải có một địa chỉ IP. Chúng cũng có thể thay đổi nếu mạng thay đổi và là duy nhất cho toàn bộ Internet.
+   - Tên máy chủ 
+     - Một cách cuối cùng để xác định máy là thông qua tên máy chủ. Tên máy chủ lưu trữ địa chỉ IP và cho phép gắn địa chỉ đó với một tên có thể đọc được của con người. Thay vì nhớ 192.12.41.4, thì có thể nhớ myhost.com.  
+ 
  - Application Layer
+   - Đầu tiên, chúng ta bắt đầu trong lớp ứng dụng. 
+   - Khi gửi email thông qua ứng dụng email, lớp ứng dụng sẽ đóng gói dữ liệu này. 
+   - Lớp ứng dụng nói chuyện với lớp truyền tải thông qua một cổng được chỉ định và thông qua cổng này, nó sẽ gửi dữ liệu của nó. 
+   - Chúng ta muốn gửi một email thông qua giao thức lớp ứng dụng SMTP (giao thức truyền thư đơn giản). 
+   - Dữ liệu được gửi thông qua giao thức truyền tải, điều này sẽ mở ra một kết nối đến cổng này (cổng 25 được sử dụng cho SMTP), vì vậy chúng ta nhận được dữ liệu này được gửi qua cổng này và dữ liệu đó được gửi đến lớp Truyền tải để được đóng gói thành các phân đoạn.  
+ 
  - Transport Layer
+   - Lớp truyền tải giúp chúng ta truyền dữ liệu của mình theo cách mà mạng có thể đọc được. 
+   - Nó chia nhỏ dữ liệu của chúng ta thành nhiều phần sẽ được vận chuyển và tập hợp lại với nhau theo đúng thứ tự. 
+   - Những phần này được gọi là phân đoạn. Phân đoạn giúp truyền dữ liệu qua mạng dễ dàng hơn.
+   - Ports:
+     - Các dịch vụ như HTTP sử dụng một kênh giao tiếp thông qua các cổng. Nếu chúng ta muốn gửi dữ liệu trang web, chúng ta cần gửi nó qua cổng HTTP (cổng 80). 
+     - Ngoài việc hình thành các phân đoạn, lớp truyền tải cũng sẽ gắn các cổng nguồn và cổng đích vào phân đoạn, vì vậy khi người nhận nhận được gói tin cuối cùng, nó sẽ biết cổng nào sẽ sử dụng.  
+   - UDP:
+     - UDP không phải là một phương pháp vận chuyển dữ liệu đáng tin cậy, trên thực tế, nó không thực sự quan tâm đến việc có lấy được tất cả dữ liệu gốc của mình hay không. những công dụng của nó, chẳng hạn như để phát trực tuyến phương tiện, sẽ không sao nếu bạn mất một số khung hình, đổi lại bạn nhận được dữ liệu của mình nhanh hơn một chút   
+   - TCP:  
  - Network Layer
  - Link Layver
  - DHCP Overview
