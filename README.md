@@ -173,9 +173,21 @@ Linux networking basic
      - Các dịch vụ như HTTP sử dụng một kênh giao tiếp thông qua các cổng. Nếu chúng ta muốn gửi dữ liệu trang web, chúng ta cần gửi nó qua cổng HTTP (cổng 80). 
      - Ngoài việc hình thành các phân đoạn, lớp truyền tải cũng sẽ gắn các cổng nguồn và cổng đích vào phân đoạn, vì vậy khi người nhận nhận được gói tin cuối cùng, nó sẽ biết cổng nào sẽ sử dụng.  
    - UDP:
-     - UDP không phải là một phương pháp vận chuyển dữ liệu đáng tin cậy, trên thực tế, nó không thực sự quan tâm đến việc có lấy được tất cả dữ liệu gốc của mình hay không. những công dụng của nó, chẳng hạn như để phát trực tuyến phương tiện, sẽ không sao nếu bạn mất một số khung hình, đổi lại bạn nhận được dữ liệu của mình nhanh hơn một chút   
-   - TCP:  
+     - UDP không phải là một phương pháp vận chuyển dữ liệu đáng tin cậy, trên thực tế, nó không thực sự quan tâm đến việc có lấy được tất cả dữ liệu gốc của mình hay không. 
+     - Những công dụng của nó, chẳng hạn như để phát trực tuyến phương tiện, sẽ không sao nếu bạn mất một số khung hình, đổi lại nhận được dữ liệu của mình nhanh hơn một chút   
+   - TCP:
+     - TCP cung cấp luồng dữ liệu hướng kết nối đáng tin cậy. 
+     - TCP sử dụng các cổng để gửi dữ liệu đến và đi từ các máy chủ. Một ứng dụng mở ra một kết nối từ một cổng trên máy chủ của nó đến một cổng khác trên máy chủ từ xa.  
+     - Để thiết lập kết nối:
+       - Máy khách (quá trình kết nối) gửi một phân đoạn SYN đến máy chủ để yêu cầu kết nối.
+       - Máy chủ gửi cho máy khách một phân đoạn SYN-ACK để xác nhận yêu cầu kết nối của máy khách.
+       - Máy khách gửi ACK đến máy chủ để xác nhận yêu cầu kết nối của máy chủ.
+     - Khi kết nối này được thiết lập, dữ liệu có thể được trao đổi qua kết nối TCP. Dữ liệu được gửi qua các phân đoạn khác nhau và được theo dõi bằng số thứ tự TCP để chúng có thể được sắp xếp theo đúng thứ tự khi chúng được phân phối.      
+ 
  - Network Layer
+   - Lớp Mạng xác định việc định tuyến các gói của chúng ta từ máy chủ nguồn đến máy chủ đích. 
+   - Trong ví dụ của chúng ta, gói tin của chúng ta chỉ di chuyển trong cùng một mạng, nhưng Internet được tạo thành từ nhiều mạng. Các mạng nhỏ hơn tạo nên Internet này được gọi là mạng con. Tất cả các mạng con đều kết nối với nhau theo một cách nào đó, đó là lý do tại sao chúng tôi có thể truy cập www.google.com mặc dù nó nằm trên mạng của chính nó. Đ
+   - ịa chỉ IP xác định các quy tắc để di chuyển đến các mạng con khác nhau.  
  - Link Layver
  - DHCP Overview
 
