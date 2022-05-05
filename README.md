@@ -220,6 +220,12 @@ Linux networking basic
 
 ## 3. Subnetting
  - IPv4
+   - Địa chỉ IPv4 trông giống như sau: ``` 204.23.124.23 ```
+   - Địa chỉ này thực sự chứa hai phần, phần mạng cho chúng ta biết mạng đang sử dụng và phần máy chủ lưu trữ cho chúng ta biết đó là máy chủ nào trên mạng đó.
+   - Địa chỉ IP được phân tách thành các octet bằng các dấu chấm. Vì vậy, có 4 octet trong một địa chỉ IPv4.
+   - Một octet là 8 bit và 8 bit thực sự bằng 1 byte, vì vậy cũng gọi địa chỉ IPv4 là có 4 byte. 
+   - Có thể xem địa chỉ IP bằng lệnh: ``` ifconfig -a ``` 
+ 
  - Subnets
  - Subnet Math
  - Subnetting Cheats
