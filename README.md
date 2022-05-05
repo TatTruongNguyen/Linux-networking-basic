@@ -108,9 +108,24 @@ Linux networking basic
 ## 2. Network Basics  
  - Network Basics
    - Một mạng gia đình sẽ có các thành phần khác nhau:
-     -   
+     - ISP - Nhà cung cấp dịch vụ Internet của bạn, công ty bạn trả tiền để có Internet tại nhà của bạn.
+     - Router - Bộ định tuyến cho phép mỗi máy trong mạng của bạn kết nối với Internet. Trong hầu hết các bộ định tuyến hiện đại, bạn có thể kết nối qua không dây hoặc cáp Ethernet.
+     - WAN - Mạng diện rộng, đây là cái mà chúng tôi gọi là mạng bao gồm mọi thứ giữa bộ định tuyến của bạn và một mạng rộng hơn, chẳng hạn như Internet.
+     - WLAN - Mạng cục bộ không dây, đây là mạng giữa bộ định tuyến của bạn và bất kỳ thiết bị không dây nào bạn có, chẳng hạn như máy tính xách tay.
+     - LAN - Mạng cục bộ, đây là mạng giữa bộ định tuyến của bạn và bất kỳ thiết bị có dây nào như Máy tính để bàn.
+     - Hosts - Mỗi máy trên mạng được gọi là máy chủ lưu trữ.
+   - Dữ liệu và thông tin được truyền qua các mạng được gọi là các gói và ở phần cuối của phần Networking Nomad.     
+ 
  - OSI Model
+   - Mô hình OSI (Open Systems Interconnection) là một mô hình lý thuyết về mạng. 
+   - Mô hình này cho chúng ta thấy cách một gói tin truyền qua một mạng ở bảy lớp khác nhau. 
+   - Đóng một phần lớn trong TCP/IP mà chúng ta sử dụng ngày nay.  
+ 
  - TCP/IP Model
+   - Mô hình OSI đã khai sinh ra mô hình cuối cùng trở thành mô hình TCP/IP và mô hình này thực sự là nền tảng của Internet. 
+   - Đó là việc triển khai thực tế của mạng. Mô hình TCP/IP sử dụng bộ giao thức TCP/IP, mà chúng ta thường gọi là TCP/IP. 
+   - Các giao thức này làm việc cùng nhau để chỉ định cách dữ liệu nên được thu thập, định địa chỉ, truyền và định tuyến thông qua một mạng. Sử dụng mô hình TCP/IP, chúng ta có thể thấy cách các giao thức này được sử dụng để chỉ ra sự phân tích về cách một gói tin truyền qua mạng.
+     
  - Network Addressing
  - Application Layer
  - Transport Layer
