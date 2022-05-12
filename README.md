@@ -227,8 +227,16 @@ Linux networking basic
    - Có thể xem địa chỉ IP bằng lệnh: ``` ifconfig -a ``` 
  
  - Subnets
+   - Mạng con là một nhóm các máy chủ có địa chỉ IP giống nhau về một mặt nào đó. Các máy chủ này thường ở vị trí gần nhau và có thể dễ dàng gửi dữ liệu đến và đi từ các máy chủ trên cùng một mạng con. 
+   - Mặt nạ mạng con:
+     - Mặt nạ mạng con xác định phần nào trong địa chỉ IP là phần mạng và phần nào là phần máy chủ.
+     - Thường có dạng như sau: ``` 255.255.255.0 ```
+     - Mạng con được sử dụng để phân đoạn mạng và kiểm soát luồng lưu lượng trong mạng đó. Vì vậy, một máy chủ trên một mạng con không thể tương tác với một máy chủ khác trên một mạng con khác.
+     
  - Subnet Math
+ 
  - Subnetting Cheats
+   -  
  - CIDR
  - NAT
  - IPv6  
